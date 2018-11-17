@@ -1,15 +1,15 @@
-import express from 'express';
+var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
-import db from './app/config/db-config';
+const db = require('./app/config/db-config.js');
 
 db.sequelize.sync({force: true}).then(() => {
     console.log('sync');
 });
 
-require('./app/route/pessoa-route')(app);
+require('./app/route/pessoa-route.js')(app);
 
 var server = app.listen(8124, () => {
     var host = server.address().address

@@ -1,4 +1,4 @@
-import db from '../config/db-config';
+const db = require('../config/db-config.js');
 const Pessoa = db.pessoas;
 
 exports.create = (req, res) => {

@@ -1,4 +1,4 @@
-import env from './env';
+const env = require('./env.js');
 
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize(env.database, env.username, env.password, {
@@ -18,6 +18,6 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.pessoas = require('../model/pessoa-model.js').default(sequelize, Sequelize);
+db.pessoas = require('../model/pessoa-model.js')(sequelize, Sequelize);
 
-export default db;
+module.exports = db;

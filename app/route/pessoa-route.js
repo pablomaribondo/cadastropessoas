@@ -1,5 +1,5 @@
-export default (app) => {
-    import pessoas from '../controller/pessoa-controller';
+module.exports =  (app) => {
+    const pessoas = require('../controller/pessoa-controller.js');
     app.post('/api/pessoas', pessoas.create);
     app.get('/api/pessoas', pessoas.findAll);
     app.get('/api/pessoas/:pessoaId', pessoas.findById);

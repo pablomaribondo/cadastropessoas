@@ -1,10 +1,10 @@
-export default (sequelize, Sequelize) => {
+module.exports = (sequelize, Sequelize) => {
     const Pessoa = sequelize.define('pessoa', {
         id: {
             primaryKey: true,
             allowNull: false,
             type: Sequelize.UUID,
-            defaultValue: DataTypes.UUIDV4,
+            defaultValue: Sequelize.UUIDV4,
             validate: {
                 notNull: true
             }

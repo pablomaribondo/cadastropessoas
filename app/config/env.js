@@ -12,4 +12,4 @@ const env = {
     }
 };
 
-export default env;
+module.exports = env;
