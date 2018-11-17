@@ -6,46 +6,64 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.UUID,
             defaultValue: Sequelize.UUIDV4,
             validate: {
-                notNull: true
+                notEmpty: {
+                    args: true,
+                    msg: 'Campo vazio!'
+                }
             }
         },
         nome: {
             allowNull: false,
             type: Sequelize.STRING,
             validate: {
-                notNull: true
+                notEmpty: {
+                    args: true,
+                    msg: 'Campo vazio!'
+                }
             }
         }, 
         dataNascimento: {
             allowNull: false,
             type: Sequelize.DATE,
             validate: {
-                notNull: true
+                notEmpty: {
+                    args: true,
+                    msg: 'Campo vazio!'
+                }
             }
         }, 
         cpf: {
             allowNull: false,
             type: Sequelize.STRING,
-            validate: {
-                notNull: true
-            },
             unique: {
                 args: true,
-                msg: 'CPF existente!'
+                msg: 'CPF já cadastrado!'
+            },
+            validate: {
+                notEmpty: {
+                    args: true,
+                    msg: 'Campo vazio!'
+                }
             }
         },
         cep: {
             allowNull: false,
             type: Sequelize.INTEGER,
             validate: {
-                notNull: true
+                notEmpty: {
+                    args: true,
+                    msg: 'Campo vazio!'
+                }
             }
         },
         endereco: {
             allowNull: false,
             type: Sequelize.STRING,
             validate: {
-                notNull: true
+                notEmpty: {
+                    args: true,
+                    msg: 'Campo vazio!'
+                }
             }
         },
         enderecoNumero: {
@@ -55,21 +73,30 @@ module.exports = (sequelize, Sequelize) => {
             allowNull: false,
             type: Sequelize.STRING,
             validate: {
-                notNull: true
+                notEmpty: {
+                    args: true,
+                    msg: 'Campo vazio!'
+                }
             }
         },
         cidade: {
             allowNull: false,
             type: Sequelize.STRING,
             validate: {
-                notNull: true
+                notEmpty: {
+                    args: true,
+                    msg: 'Campo vazio!'
+                }
             }
         },
         estado: {
             allowNull: false,
             type: Sequelize.STRING,
             validate: {
-                notNull: true
+                notEmpty:  {
+                    args: true,
+                    msg: 'Campo vazio!'
+                }
             }
         },
         enderecoComplemento: {

@@ -16,6 +16,8 @@ exports.create = (req, res) => {
         enderecoComplemento: req.body.enderecoComplemento
     }).then(pessoa => {
         res.send(pessoa);
+    }).catch((error) => {
+        res.status(400).send(error.message);
     });
 };
 

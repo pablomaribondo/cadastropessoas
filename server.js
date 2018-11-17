@@ -6,7 +6,7 @@ app.use(bodyParser.json());
 const db = require('./app/config/db-config.js');
 
 db.sequelize.sync({force: true}).then(() => {
-    console.log('sync');
+    console.log('Sync');
 });
 
 require('./app/route/pessoa-route.js')(app);
