@@ -1,4 +1,4 @@
-import env from './env.js';
+import env from './env';
 
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize(env.database, env.username, env.password, {

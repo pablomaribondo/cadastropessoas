@@ -4,6 +4,7 @@ export default (sequelize, Sequelize) => {
             primaryKey: true,
             allowNull: false,
             type: Sequelize.UUID,
+            defaultValue: DataTypes.UUIDV4,
             validate: {
                 notNull: true
             }
