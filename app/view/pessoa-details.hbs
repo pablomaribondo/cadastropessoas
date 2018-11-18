@@ -1,0 +1,16 @@
+<h1>{{pessoa.nome}}</h1>
+<ul class="list-group">
+    <li class="list-group-item"><strong>Data de nascimento: </strong>{{pessoa.dataNascimento}}</li>
+    <li class="list-group-item"><strong>CPF: </strong>{{pessoa.cpf}}</li>
+    <li class="list-group-item"><strong>CEP: </strong>{{pessoa.cep}}</li>
+    <li class="list-group-item"><strong>Endereço: </strong>{{pessoa.endereco}}</li>
+    <li class="list-group-item"><strong>Número: </strong>{{pessoa.enderecoNumero}}</li>
+    <li class="list-group-item"><strong>Bairro: </strong>{{pessoa.bairro}}</li>
+    <li class="list-group-item"><strong>Cidade: </strong>{{pessoa.cidade}}</li>
+    <li class="list-group-item"><strong>Estado: </strong>{{pessoa.estado}}</li>
+    <li class="list-group-item"><strong>Complemento: </strong>{{pessoa.enderecoComplemento}}</li>
+</ul>
+<a href="/" class="btn btn-default pull-left">Voltar</a>
+<form action="pessoa/delete/{{pessoa.id}}?_method=DELETE" method="POST">
+    <input type="submit" class="btn btn-danger pull-right">
+</form>

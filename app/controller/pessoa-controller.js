@@ -23,7 +23,7 @@ exports.create = (req, res) => {
 
 exports.findAll = (req, res) => {
     Pessoa.findAll().then(pessoas => {
-        res.send(pessoas);
+        return pessoas;
     });
 };
 

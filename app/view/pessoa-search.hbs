@@ -1,0 +1,8 @@
+<h1>Procurar pessoa</h1>
+{{#if error}} <span>{{error}}</span>{{/if}}
+<form action="/pessoa/procurar" class="form-inline" method="POST">
+    <div class="form-group">
+        <input type="text" class="form-control" name="id" placeholder="ID"/>
+    </div>
+    <input type="submit" value="Search" class="btn btn-primary">
+</form>
