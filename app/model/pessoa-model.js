@@ -34,7 +34,7 @@ module.exports = (sequelize, Sequelize) => {
         }, 
         cpf: {
             allowNull: false,
-            type: Sequelize.STRING,
+            type: Sequelize.STRING(20),
             unique: {
                 args: true,
                 msg: 'CPF já cadastrado!'
@@ -67,11 +67,11 @@ module.exports = (sequelize, Sequelize) => {
             }
         },
         enderecoNumero: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING(20)
         },
         bairro: {
             allowNull: false,
-            type: Sequelize.STRING,
+            type: Sequelize.STRING(50),
             validate: {
                 notEmpty: {
                     args: true,
@@ -81,7 +81,7 @@ module.exports = (sequelize, Sequelize) => {
         },
         cidade: {
             allowNull: false,
-            type: Sequelize.STRING,
+            type: Sequelize.STRING(50),
             validate: {
                 notEmpty: {
                     args: true,
@@ -91,7 +91,7 @@ module.exports = (sequelize, Sequelize) => {
         },
         estado: {
             allowNull: false,
-            type: Sequelize.STRING,
+            type: Sequelize.STRING(50),
             validate: {
                 notEmpty:  {
                     args: true,
@@ -100,7 +100,7 @@ module.exports = (sequelize, Sequelize) => {
             }
         },
         enderecoComplemento: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING(50)
         }
     });
     return Pessoa;

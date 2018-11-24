@@ -25,7 +25,7 @@ mysqlDB.connect((error) => {
                             console.log('Database created!');
                         }
                     });
-                    mysqlDB.query("CREATE TABLE cadastropessoas_db.pessoas (id VARCHAR(36), nome VARCHAR(255), dataNascimento DATE, cpf VARCHAR(20), cep INT,endereco VARCHAR(255), enderecoNumero VARCHAR(20), bairro VARCHAR(50), cidade VARCHAR(50), estado VARCHAR(50), enderecoComplemento VARCHAR(50))", (error, result) => {
+                    mysqlDB.query("CREATE TABLE cadastropessoas_db.pessoas (id VARCHAR(36) NOT NULL, nome VARCHAR(255) NOT NULL, dataNascimento DATE NOT NULL, cpf VARCHAR(20) NOT NULL UNIQUE, cep INT NOT NULL,endereco VARCHAR(255) NOT NULL, enderecoNumero VARCHAR(20), bairro VARCHAR(50) NOT NULL, cidade VARCHAR(50) NOT NULL, estado VARCHAR(50) NOT NULL, enderecoComplemento VARCHAR(50), PRIMARY KEY (id))", (error, result) => {
                         if (error) {
                             console.log(error);
                         } else {
