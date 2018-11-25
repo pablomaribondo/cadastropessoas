@@ -1,4 +1,5 @@
 const db = require('../config/db-config.js');
+const handlebars = require('handlebars');
 const Pessoa = db.pessoas;
 
 exports.create = (req, res) => {
@@ -21,9 +22,19 @@ exports.create = (req, res) => {
     });
 };
 
-exports.findAll = (req, res) => {
+exports.findAll = (req,res) => {
     Pessoa.findAll().then(pessoas => {
-        return pessoas;
+        res.render('pessoa-list', {
+            helpers: {
+                list: () => {
+                    let str = '';
+                    for (let i = 0; i < pessoas.length; i++) {
+                        str += `<tr><td>${pessoas[i].dataValues.nome}</td><td>${pessoas[i].dataValues.dataNascimento}</td><td>${pessoas[i].dataValues.cpf}</td><td>${pessoas[i].dataValues.cep}</td><td>${pessoas[i].dataValues.endereco}</td><td>${pessoas[i].dataValues.enderecoNumero}</td><td>${pessoas[i].dataValues.bairro}</td><td>${pessoas[i].dataValues.cidade}</td><td>${pessoas[i].dataValues.estado}</td><td>${pessoas[i].dataValues.enderecoComplemento}</td></tr>`;
+                    };
+                    return new handlebars.SafeString(str);
+                }
+            }
+        });
     });
 };
 

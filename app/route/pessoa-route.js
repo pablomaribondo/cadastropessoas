@@ -1,21 +1,17 @@
-module.exports =  (app) => {
+module.exports = (app) => {
 
-    const pessoas = require('../controller/pessoa-controller.js');
+    const pessoa = require('../controller/pessoa-controller.js');
+   
+    app.get('/', pessoa.findAll);
 
-    app.get('/', function (req, res, next) {
-        res.render('pessoa-search', {
-            pessoas: pessoas.findAll(req, res)
-        });
-    });
+    app.post('/api/pessoas', pessoa.create);
 
-    app.post('/api/pessoas', pessoas.create);
+    app.get('/api/pessoas', pessoa.findAll);
 
-    app.get('/api/pessoas', pessoas.findAll);
+    app.get('/api/pessoas/:pessoaId', pessoa.findById);
 
-    app.get('/api/pessoas/:pessoaId', pessoas.findById);
+    app.put('/api/pessoas/:pessoaId', pessoa.update);
 
-    app.put('/api/pessoas/:pessoaId', pessoas.update);
+    app.delete('/api/pessoas/:pessoaId', pessoa.delete);
 
-    app.delete('/api/pessoas/:pessoaId', pessoas.delete);
-    
 }
