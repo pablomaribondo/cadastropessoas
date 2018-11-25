@@ -1,8 +1,28 @@
 <h1>Procurar pessoa</h1>
 {{#if error}} <span>{{error}}</span>{{/if}}
-<form action="/pessoa/procurar" class="form-inline" method="POST">
+{{!-- <form action="/pessoa/procurar" class="form-inline" method="POST">
     <div class="form-group">
-        <input type="text" class="form-control" name="id" placeholder="ID"/>
+        <input type="text" class="form-control" name="id" placeholder="ID" />
     </div>
     <input type="submit" value="Search" class="btn btn-primary">
-</form>
+</form> --}}
+{{#each pessoas}}
+    <li>{{this.pessoa}}</li>
+{{/each}}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Data de Nascimento</th>
+            <th scope="col">CPF</th>
+            <th scope="col">CEP</th>
+            <th scope="col">Endereço</th>
+            <th scope="col">Número</th>
+            <th scope="col">Bairro</th>
+            <th scope="col">Cidade</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Complemento</th>
+        </tr>
+    </thead>
+
+</table>

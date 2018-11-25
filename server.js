@@ -5,13 +5,15 @@ const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const db = require('./app/config/db-config.js');
 
-db.sequelize.sync({force: true}).then(() => {
+db.sequelize.sync({
+    force: false
+}).then(() => {
     console.log('Sync');
 });
 
 const app = express();
 
-var handlebars = require('express-handlebars').create({
+var handlebars = exphbs.create({
     layoutsDir: path.join(__dirname, "app/view/layout"),
     partialsDir: path.join(__dirname, "app/view/partial"),
     defaultLayout: 'main',
@@ -23,7 +25,9 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, "app/view"));
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
 
 app.use(methodOverride('_method'));
 
