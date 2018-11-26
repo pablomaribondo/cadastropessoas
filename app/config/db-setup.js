@@ -30,6 +30,7 @@ mysqlDB.connect((error) => {
                             console.log(error);
                         } else {
                             console.log('Table created!');
+                            process.exit(0);
                         }
                     });
                 }
