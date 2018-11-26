@@ -1,5 +1,6 @@
 const db = require('../config/db-config.js');
 const handlebars = require('handlebars');
+const Sequelize = require('sequelize');
 const Pessoa = db.pessoas;
 
 exports.create = (req, res) => {
@@ -17,7 +18,7 @@ exports.create = (req, res) => {
         enderecoComplemento: req.body.enderecoComplemento
     }).then(pessoa => {
         res.redirect('/');
-    }).catch((error) => {
+    }).catch(Sequelize.ValidationError, (error) => {
         res.render('pessoa-add', {
             error: error
         });
