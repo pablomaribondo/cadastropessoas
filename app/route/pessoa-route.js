@@ -4,7 +4,11 @@ module.exports = (app) => {
    
     app.get('/', pessoa.findAll);
 
-    app.post('/api/pessoas', pessoa.create);
+    app.get('/adicionar-pessoas', (req, res, next) => {
+        res.render('pessoa-add');
+    });
+
+    app.post('/adicionar-pessoas', pessoa.create);
 
     app.get('/api/pessoas', pessoa.findAll);
 

@@ -16,15 +16,18 @@ exports.create = (req, res) => {
         estado: req.body.estado,
         enderecoComplemento: req.body.enderecoComplemento
     }).then(pessoa => {
-        res.send(pessoa);
+        res.redirect('/');
     }).catch((error) => {
-        res.status(400).send(error.message);
+        res.render('pessoa-add', {
+            error: error
+        });
     });
 };
 
 exports.findAll = (req,res) => {
     Pessoa.findAll().then(pessoas => {
         res.render('pessoa-list', {
+            pessoas: pessoas,
             helpers: {
                 list: () => {
                     let str = '';

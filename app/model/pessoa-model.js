@@ -24,7 +24,7 @@ module.exports = (sequelize, Sequelize) => {
         }, 
         dataNascimento: {
             allowNull: false,
-            type: Sequelize.DATE,
+            type: Sequelize.DATEONLY,
             validate: {
                 notEmpty: {
                     args: true,
