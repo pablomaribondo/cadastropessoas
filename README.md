@@ -24,7 +24,11 @@ Inicie o projeto.
 npm start
 ```
 
-Caso um erro do sequelize apareça, mude o parâmetro 'force' para 'true' e rode novamente. Depois lembre de voltar para 'false', pois com o parâmetro sendo 'true', o banco será apagado toda vez que reiniciar a aplicação.
+Caso esse erro do sequelize apareça, mude o parâmetro 'force' para 'true' e rode novamente. Depois lembre de voltar para 'false', pois com o parâmetro sendo 'true', o banco será apagado toda vez que reiniciar a aplicação.
+
+```bash
+Unhandled rejection SequelizeDatabaseError: Unknown column 'createdAt' in 'field list'
+```
 
 ```javascript
 db.sequelize.sync({
