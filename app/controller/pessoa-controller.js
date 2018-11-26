@@ -67,7 +67,7 @@ exports.update = (req, res) => {
     { 
         where: {id: req.params.pessoaId} 
     }).then(() => {
-        res.status(200).send('Pessoa atualizada!');
+        res.status(200).redirect('/');
     });
 };
 

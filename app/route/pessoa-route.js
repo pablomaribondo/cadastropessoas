@@ -11,8 +11,8 @@ module.exports = (app) => {
     app.post('/adicionar-pessoas', pessoa.create);
 
     app.get('/editar-pessoas/:pessoaId', pessoa.findById);
-
-    app.put('/api/pessoas/:pessoaId', pessoa.update);
+    //Falta implementar front end do 'editar pessoas'
+    app.put('/editar-pesoas/:pessoaId', pessoa.update);
 
     app.delete('/editar-pessoas/:pessoaId', pessoa.delete);
 
