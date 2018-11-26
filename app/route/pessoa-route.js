@@ -14,6 +14,6 @@ module.exports = (app) => {
 
     app.put('/api/pessoas/:pessoaId', pessoa.update);
 
-    app.delete('/api/pessoas/:pessoaId', pessoa.delete);
+    app.delete('/editar-pessoas/:pessoaId', pessoa.delete);
 
 }

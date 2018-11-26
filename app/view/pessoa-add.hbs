@@ -11,11 +11,12 @@
     </div>
     <div class="form-group">
         <label>CPF</label>
-        <input type="text" name="cpf" class="form-control" placeholder="CPF" maxlength="11"/>
+        <input type="text" name="cpf" class="form-control" placeholder="CPF" maxlength="11" />
     </div>
     <div class="form-group">
         <label>CEP</label>
-        <input type="text" name="cep" class="form-control" placeholder="CEP" onblur="pesquisacep(this.value);" maxlength="9" />
+        <input type="text" name="cep" class="form-control" placeholder="CEP" onblur="pesquisacep(this.value);"
+            maxlength="9" />
     </div>
     <div class="form-group">
         <label>Endereço</label>
@@ -69,11 +70,19 @@
         <label>Complemento</label>
         <input type="text" name="enderecoComplemento" class="form-control" placeholder="Complemento" />
     </div>
-    <input type="submit" class="btn btn-primary" value="Adicionar" />
+    <div class="container">
+        <div class="row">
+            <div class="col-auto mr-auto">
+                <a href="/" class="btn btn-primary">Voltar</a>
+            </div>
+            <div class="col-auto">
+                <input type="submit" class="btn btn-success" value="Adicionar" />
+            </div>
+        </div>
+    </div>
 </form>
 
 <script type="text/javascript">
-
     function cb(conteudo) {
         if (!("erro" in conteudo)) {
             document.getElementById('endereco').value = (conteudo.logradouro);
@@ -87,7 +96,7 @@
                     break;
                 }
             }
-        } 
+        }
     }
 
     function pesquisacep(valor) {
@@ -103,14 +112,13 @@
                 document.getElementById('endereco').value = "...";
                 document.getElementById('bairro').value = "...";
                 document.getElementById('cidade').value = "...";
-                
+
                 var script = document.createElement('script');
 
                 script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=cb';
 
                 document.body.appendChild(script);
-            }            
-        } 
+            }
+        }
     };
-
 </script>
