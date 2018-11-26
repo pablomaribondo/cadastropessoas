@@ -33,7 +33,7 @@ exports.findAll = (req,res) => {
                 list: () => {
                     let str = '';
                     for (let i = 0; i < pessoas.length; i++) {
-                        str += `<tr><td>${pessoas[i].dataValues.nome}</td><td>${pessoas[i].dataValues.dataNascimento}</td><td>${pessoas[i].dataValues.cpf}</td><td>${pessoas[i].dataValues.cep}</td><td>${pessoas[i].dataValues.endereco}</td><td>${pessoas[i].dataValues.enderecoNumero}</td><td>${pessoas[i].dataValues.bairro}</td><td>${pessoas[i].dataValues.cidade}</td><td>${pessoas[i].dataValues.estado}</td><td>${pessoas[i].dataValues.enderecoComplemento}</td></tr>`;
+                        str += `<tr><td>${pessoas[i].dataValues.nome}</td><td>${pessoas[i].dataValues.dataNascimento}</td><td>${pessoas[i].dataValues.cpf}</td><td>${pessoas[i].dataValues.cep}</td><td>${pessoas[i].dataValues.endereco}</td><td>${pessoas[i].dataValues.enderecoNumero}</td><td>${pessoas[i].dataValues.bairro}</td><td>${pessoas[i].dataValues.cidade}</td><td>${pessoas[i].dataValues.estado}</td><td>${pessoas[i].dataValues.enderecoComplemento}</td><td><a class="btn btn-info" href="/editar-pessoas/${pessoas[i].dataValues.id}" role="button">Visualizar</a></td></tr>`;
                     };
                     return new handlebars.SafeString(str);
                 }
@@ -44,7 +44,9 @@ exports.findAll = (req,res) => {
 
 exports.findById = (req, res) => {
     Pessoa.findById(req.params.pessoaId).then(pessoa => {
-        res.send(pessoa);
+        res.render('pessoa-details', {
+            pessoa: pessoa
+        });
     });
 };
 

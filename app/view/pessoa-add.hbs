@@ -11,15 +11,15 @@
     </div>
     <div class="form-group">
         <label>CPF</label>
-        <input type="text" name="cpf" class="form-control" placeholder="CPF" />
+        <input type="text" name="cpf" class="form-control" placeholder="CPF" maxlength="11"/>
     </div>
     <div class="form-group">
         <label>CEP</label>
-        <input type="text" name="cep" class="form-control" placeholder="CEP" />
+        <input type="text" name="cep" class="form-control" placeholder="CEP" onblur="pesquisacep(this.value);" maxlength="9" />
     </div>
     <div class="form-group">
         <label>Endereço</label>
-        <input type="text" name="endereco" class="form-control" placeholder="Endereço" />
+        <input id="endereco" type="text" name="endereco" class="form-control" placeholder="Endereço" />
     </div>
     <div class="form-group">
         <label>Número</label>
@@ -27,42 +27,42 @@
     </div>
     <div class="form-group">
         <label>Bairro</label>
-        <input type="text" name="bairro" class="form-control" placeholder="Bairro" />
+        <input id="bairro" type="text" name="bairro" class="form-control" placeholder="Bairro" />
     </div>
     <div class="form-group">
         <label>Cidade</label>
-        <input type="text" name="cidade" class="form-control" placeholder="Cidade" />
+        <input id="cidade" type="text" name="cidade" class="form-control" placeholder="Cidade" />
     </div>
     <div class="form-group">
         <label>Estado</label>
-        <select name="estado" class="form-control">
-            <option>Acre</option>
-            <option>Alagoas</option>
-            <option>Amapá</option>
-            <option>Amazonas</option>
-            <option>Bahia</option>
-            <option>Ceará</option>
-            <option>Distrito Federal</option>
-            <option>Espírito Santo</option>
-            <option>Goiás</option>
-            <option>Maranhão</option>
-            <option>Mato Grosso</option>
-            <option>Mato Grosso do Sul</option>
-            <option>Minas Gerais</option>
-            <option>Pará</option>
-            <option>Paraíba</option>
-            <option>Paraná</option>
-            <option>Pernambuco</option>
-            <option>Piauí</option>
-            <option>Rio de Janeiro</option>
-            <option>Rio Grande do Norte</option>
-            <option>Rio Grande do Sul</option>
-            <option>Rondônia</option>
-            <option>Roraima</option>
-            <option>Santa Catarina</option>
-            <option>São Paulo</option>
-            <option>Sergipe</option>
-            <option>Tocantins</option>
+        <select id="estado" name="estado" class="form-control">
+            <option value="AC">Acre</option>
+            <option value="AL">Alagoas</option>
+            <option value="AP">Amapá</option>
+            <option value="AM">Amazonas</option>
+            <option value="BA">Bahia</option>
+            <option value="CE">Ceará</option>
+            <option value="DF">Distrito Federal</option>
+            <option value="ES">Espírito Santo</option>
+            <option value="GO">Goiás</option>
+            <option value="MA">Maranhão</option>
+            <option value="MT">Mato Grosso</option>
+            <option value="MS">Mato Grosso do Sul</option>
+            <option value="MG">Minas Gerais</option>
+            <option value="PA">Pará</option>
+            <option value="PB">Paraíba</option>
+            <option value="PR">Paraná</option>
+            <option value="PE">Pernambuco</option>
+            <option value="PI">Piauí</option>
+            <option value="RJ">Rio de Janeiro</option>
+            <option value="RN">Rio Grande do Norte</option>
+            <option value="RS">Rio Grande do Sul</option>
+            <option value="RO">Rondônia</option>
+            <option value="RR">Roraima</option>
+            <option value="SC">Santa Catarina</option>
+            <option value="SP">São Paulo</option>
+            <option value="SE">Sergipe</option>
+            <option value="TO">Tocantins</option>
         </select>
     </div>
     <div class="form-group">
@@ -71,3 +71,46 @@
     </div>
     <input type="submit" class="btn btn-primary" value="Adicionar" />
 </form>
+
+<script type="text/javascript">
+
+    function cb(conteudo) {
+        if (!("erro" in conteudo)) {
+            document.getElementById('endereco').value = (conteudo.logradouro);
+            document.getElementById('bairro').value = (conteudo.bairro);
+            document.getElementById('cidade').value = (conteudo.localidade);
+            var estados = document.getElementById('estado');
+            var optionsEstados = estados.options;
+            for (var option, j = 0; option = optionsEstados[j]; j++) {
+                if (option.value == (conteudo.uf)) {
+                    estados.selectedIndex = j;
+                    break;
+                }
+            }
+        } 
+    }
+
+    function pesquisacep(valor) {
+
+        var cep = valor.replace(/\D/g, '');
+
+        if (cep != "") {
+
+            var validacep = /^[0-9]{8}$/;
+
+            if (validacep.test(cep)) {
+
+                document.getElementById('endereco').value = "...";
+                document.getElementById('bairro').value = "...";
+                document.getElementById('cidade').value = "...";
+                
+                var script = document.createElement('script');
+
+                script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=cb';
+
+                document.body.appendChild(script);
+            }            
+        } 
+    };
+
+</script>

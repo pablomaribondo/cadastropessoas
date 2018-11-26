@@ -10,9 +10,7 @@ module.exports = (app) => {
 
     app.post('/adicionar-pessoas', pessoa.create);
 
-    app.get('/api/pessoas', pessoa.findAll);
-
-    app.get('/api/pessoas/:pessoaId', pessoa.findById);
+    app.get('/editar-pessoas/:pessoaId', pessoa.findById);
 
     app.put('/api/pessoas/:pessoaId', pessoa.update);
 
